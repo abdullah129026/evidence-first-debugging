@@ -26,13 +26,19 @@ Supporting rules, all in [SKILL.md](SKILL.md):
 
 ## Use it
 
-Copy `SKILL.md` into your agent's skills directory (for example `~/.claude/skills/evidence-first-debugging/SKILL.md` for Claude Code, or your agent framework's equivalent), or paste it into your system prompt or project instructions. It is plain markdown, no tooling required.
+Copy `SKILL.md` into your agent's skills directory (for example `~/.claude/skills/evidence-first-debugging/SKILL.md` for Claude Code, or your agent framework's equivalent), or paste it into your system prompt or project instructions. It carries standard YAML frontmatter (name and description), so Claude Code and compatible agents load it automatically and trigger it on debugging tasks.
 
 A worked example of the method catching what guessing could not is in [examples/the-dns-record.md](examples/the-dns-record.md).
 
 ## Why this works when self checking does not
 
 A self improving loop is only as good as its judge, and a model judging itself eventually grades its own homework. In code, reality can judge instead: tests pass or fail, builds hold or break, logs say what actually happened. This skill is built to force the loop to consult that reality early and often, instead of arguing with itself.
+
+## Honest limits
+
+This skill has not been through a controlled evaluation yet. Its support is one real incident and the reasoning in this repo, not measured before and after numbers. Treat it as a strong discipline, not a proven result.
+
+How to evaluate it properly: take a set of real debugging tasks, run each one twice with the same model, with the skill and without it, and compare attempts per fix, tokens per fix, and regressions introduced. If you run that comparison, this repo wants your numbers, good or bad. That is the difference between a claim and research, and the skill should be held to its own standard: no verdict without evidence.
 
 ## Contributing
 
